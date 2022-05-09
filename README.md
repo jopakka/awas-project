@@ -25,7 +25,7 @@ Once you are in the system, create database awas_project and use it
 
 Next, create table "users"
 ```
-  CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(15) NOT NULL, Password VARCHAR(15) NOT NULL, IsAdmin BOOLEAN NOT NULL);
+  CREATE TABLE IF NOT EXISTS Users(id MEDIUMINT NOT NULL AUTO_INCREMENT, Username VARCHAR(15) NOT NULL, Password VARCHAR(15) NOT NULL, IsAdmin BOOLEAN NOT NULL, PRIMARY KEY (id));
 ```
 
 Congratulations, you have now created the database and necessary tables! Now you just need to use the website.
