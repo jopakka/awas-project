@@ -15,3 +15,17 @@ Log in as the root user with:
   
 Then enter your root password
 
+## Create database and tables
+
+Once you are in the system, create database awas_project and use it
+```
+  CREATE OR REPLACE DATABASE awas_project;
+  USE awas_project;
+```
+
+Next, create table "users"
+```
+  CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(15) NOT NULL, Password VARCHAR(15) NOT NULL, IsAdmin BOOLEAN NOT NULL);
+```
+
+Congratulations, you hve now created the database and necessary tables! Now you just need to use the website.
