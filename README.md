@@ -25,7 +25,23 @@ Once you are in the system, create database awas_project and use it
 
 Next, create table "users"
 ```
-  CREATE TABLE IF NOT EXISTS Users(id MEDIUMINT NOT NULL AUTO_INCREMENT, Username VARCHAR(15) NOT NULL, Password VARCHAR(15) NOT NULL, IsAdmin BOOLEAN NOT NULL, PRIMARY KEY (id));
+  CREATE TABLE IF NOT EXISTS Users(
+  id MEDIUMINT NOT NULL AUTO_INCREMENT, 
+  Username VARCHAR(15) NOT NULL, 
+  Password VARCHAR(15) NOT NULL, 
+  IsAdmin BOOLEAN NOT NULL, 
+  PRIMARY KEY (id));
+```
+
+Next, create table "products"
+```
+  CREATE TABLE IF NOT EXISTS Products(
+  id MEDIUMINT NOT NULL AUTO_INCREMENT, 
+  ProductName VARCHAR(30) NOT NULL,
+  ProductDescription VARCHAR(500) NOT NULL, 
+  UserId MEDIUMINT NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY (UserId) REFERENCES USERS(id));
 ```
 
 Congratulations, you have now created the database and necessary tables! Now you just need to use the website.
