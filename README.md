@@ -1,10 +1,10 @@
 # AWAS project
 
-## Install MariaDB
+### Install MariaDB
 
 If you do not already have MariaDB installed on your computer, you can download it here: [download link](https://mariadb.org/download/?t=mariadb&p=mariadb&r=10.6.7&os=windows&cpu=x86_64&pkg=msi&m=xtom_tal)
 
-## Navigate to database client and login as root
+### Navigate to database client and login as root
 
 Go to your database/bin file (for example C:\Program Files\MariaDB 10.6\bin)
 
@@ -15,7 +15,7 @@ Log in as the root user with:
   
 Then enter your root password
 
-## Create database and tables
+### Create database and tables
 
 Once you are in the system, create database awas_project and use it
 ```
