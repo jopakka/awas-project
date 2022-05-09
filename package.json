@@ -1,0 +1,16 @@
+{
+  "name": "awas-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.18.1"
+  }
+}
