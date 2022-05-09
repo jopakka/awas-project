@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>AWAS Project</title>
-</head>
-<body>
-<h1>Public page</h1>
-<a href="./login.html">Login</a><br>
-<a href="./register.html">Register</a>
-<p>Everyone can see this.</p>
-</body>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="navbar-top" class="navbar">
+        <div id="header-title-container">
+          <p>Online marketplace</p>
+        </div>
+        <div id="header-button-container">
+          <a href="./login.html">Login</a>
+          <a href="./register.html">Register</a>
+        </div>
+      </nav>
+    </header>
+    <h1>Public page</h1>
+    <p>Everyone can see this.</p>
+
+    <div class="productlisting">
+      <p>product list goes here</p>
+      <ul id="productList">
+
+      </ul>
+    </div>
+
+    <!-- Custom scripts -->
+    <script src="js/main.js"></script>
+
+  </body>
 </html>
