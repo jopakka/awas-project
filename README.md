@@ -28,4 +28,4 @@ Next, create table "users"
   CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(15) NOT NULL, Password VARCHAR(15) NOT NULL, IsAdmin BOOLEAN NOT NULL);
 ```
 
-Congratulations, you hve now created the database and necessary tables! Now you just need to use the website.
+Congratulations, you have now created the database and necessary tables! Now you just need to use the website.
