@@ -5,8 +5,8 @@ import { startDatabase, testQuery } from "./js/db";
 
 const app = express();
 
-app.listen(3000, async () => {
-  console.log("App running on http://localhost:3000/");
-  console.log("attempting to start mariadb: ", await startDatabase());
-  console.log("attempting to fetch users: ", await testQuery());
+app.use(express.static('./public'));
+
+app.listen(3000, () => {
+  console.log('App running on http://localhost:3000/');
 });
