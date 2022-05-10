@@ -25,6 +25,7 @@ form.addEventListener('submit', async evt => {
     } else {
       errorField.className = 'hidden';
       document.cookie = `token=${json.token}; SameSite=lax;`;
+      document.cookie = `userId=${json.user.id}; SameSite=lax;`;
       window.open('http://localhost:3000/secret', '_self');
     }
   } catch (e) {
