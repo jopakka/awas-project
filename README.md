@@ -13,7 +13,7 @@ Log in as the root user with:
 mysql -u root -p
 ```
   
-Then enter your root password
+Then enter your root password (you decided it during installation)
 
 ### Create database and tables
 
