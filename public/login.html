@@ -1,24 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Login</title>
-    <link rel="stylesheet" href="./styles/hidden.css">
-</head>
-<body>
-<h1>Login</h1>
-<form id="loginForm">
-    <label>Username
-        <input type="text" name="username" placeholder="Enter username">
-    </label><br>
-    <label>Password
-        <input type="password" name="password" placeholder="Enter password">
-    </label><br>
-    <p id="loginError" class="hidden"></p>
-    <input type="submit" value="Login">
-</form>
-<a href="./register.html">To register</a>
+    <link rel="stylesheet" href="./styles/hidden.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="navbar-top" class="navbar">
+        <div id="header-title-container">
+          <p>Online marketplace</p>
+        </div>
+        <div id="header-button-container">
+          <a href="./index.html">Main Page</a>
+          <a href="./login.html">Login</a>
+          <a href="./register.html">Register</a>
+        </div>
+      </nav>
+    </header>
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label
+        >Username
+        <input
+          type="text"
+          name="username"
+          placeholder="Enter username"
+        /> </label
+      ><br />
+      <label
+        >Password
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+        /> </label
+      ><br />
+      <p id="loginError" class="hidden"></p>
+      <input type="submit" value="Login" />
+    </form>
+    <a href="./register.html">To register</a>
 
-<script src="./js/login.js"></script>
-</body>
+    <script src="./js/login.js"></script>
+  </body>
 </html>

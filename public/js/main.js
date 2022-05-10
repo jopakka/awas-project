@@ -2,15 +2,20 @@
 (async () => {
   const productList = document.querySelector("#productList");
   const buttonCreateProduct = document.querySelector("#createProduct");
-  console.log("do i exist?");
 
+  // Creates form for user input to create product
+  const createProductForm = () => {
+
+  };
+
+  // Clears product listing and calls createProductContent();
   const loadContent = () => {
-    // clear ul
     console.log("loadcontent");
     productList.innerHTML = "";
     createProductContent();
   };
 
+  // Creates Product content via DOM 
   const createProductContent = () => {
     console.log("createproductcontent");
 
@@ -38,6 +43,7 @@
 
   buttonCreateProduct.addEventListener("click", (event) => {
     event.preventDefault();
+    createProductForm()
     createProductContent();
   });
 })();
