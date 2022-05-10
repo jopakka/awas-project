@@ -40,8 +40,8 @@ const registerQuery = async (username, password) => {
 const insertProduct = async (title, description, userId) => {
   try {
     const row = await pool.query(`INSERT INTO products(ProductName, ProductDescription, UserId) VALUES ("${title}", "${description}", "${userId}")`);
-    console.log("row", row.insertId)
-    return "success";
+    console.log("row", row)
+    return row;
   } catch (e) {
     return e;
   }

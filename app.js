@@ -32,9 +32,12 @@ app.post(
         req.body.description,
         req.user.id
       );
-      console.log("product: ", product);
-    } catch (error) {}
-    res.send("ok");
+      const newProduct = JSON.stringify(product, (_, v) => typeof v === 'bigint' ? v.toString() : v)
+      const obj = JSON.parse(newProduct)
+      res.json(obj)
+    } catch (error) {
+      res.status(400).json({message: "Insert error", error: error.message})
+    }
   }
 );
 
