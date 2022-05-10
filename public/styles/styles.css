@@ -19,5 +19,31 @@
 }
 
 .productContent {
-    background-color: aqua;
+    background-color: whitesmoke;
+}
+
+.productDescription {
+    display: flex;
+    justify-content: flex-start;
+    height: 50%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 120px;
+    max-width: 100%;
+    max-height: 50%;
+    overflow: auto;
+    word-break: break-word;
+    font-family: "Architects Daughter", serif;
+    font-size: larger;
+    line-height: 33px;
+    line-break: auto;
+    white-space: pre-line;
+}
+
+.productTitle {
+    display: flex;
+    justify-content: flex-start;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 40px;
 }

@@ -9,11 +9,16 @@
   // Creates form for user input to create product
   const createProductForm = () => {
     console.log("createProductForm");
+
+    // if the form already exists, then ...
     if (document.querySelector("#createProductForm")) {
       console.log("createProductForm exists");
       // delete product form
       document.querySelector("#createProductForm").remove();
-    } else {
+    } 
+
+    // if the form doesn't exist, then ...
+    else {
       console.log("createProductForm does not exist");
       // create product form
 
@@ -52,7 +57,7 @@
         "createProductFormDescription"
       );
 
-      // submit form
+      // submit form button (or technically input)
       const createProductFormInputSubmit = document.createElement("input");
       createProductFormInputSubmit.setAttribute("type", "submit");
       createProductFormInputSubmit.setAttribute("value", "submit");
@@ -68,8 +73,6 @@
 
       createProductContainer.appendChild(createProductFormContainer);
       createProductFormList.appendChild(createProductContainer);
-
-      console.log("created product form");
 
       // click listener for submitting form
       createProductFormInputSubmit.addEventListener("click", (event) => {
@@ -98,7 +101,9 @@
     productContainer.classList.add("productContent");
 
     const productTitle = document.createElement("h3");
-    const productDescription = document.createElement("p");
+    productTitle.classList.add("productTitle");
+    const productDescription = document.createElement("article");
+    productDescription.classList.add("productDescription")
 
     productTitle.innerHTML = title;
     productDescription.innerHTML = description;
