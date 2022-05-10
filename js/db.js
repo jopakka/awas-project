@@ -47,7 +47,10 @@ const registerQuery = async (username, password) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const [user] = await conn.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", false)`)
+    const row = await conn.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", false)`);
+    console.log("row", row.insertId)
+    const [user] = await conn.query('SELECT * FROM users WHERE id=?', [row.insertId]);
+    console.log("user", user)
     return user
   } catch (e) {
     return e;
