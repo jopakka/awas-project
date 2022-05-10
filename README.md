@@ -46,5 +46,14 @@ Next, create table "products"
   );
 ```
 
+Next, create a database admin account and grant the user privileges
+```
+  CREATE USER 'awasUser'@localhost IDENTIFIED BY 'password1';
+  
+  GRANT ALL PRIVILEGES ON awas_project.* TO awasUser@localhost;
+  
+  FLUSH PRIVILEGES;
+```
+
 Congratulations, you have now created the database and necessary tables! Now you just need to use the website.
 
