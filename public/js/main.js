@@ -1,4 +1,5 @@
 "use strict";
+
 (async () => {
   const productList = document.querySelector("#productList");
   const createProductFormList = document.querySelector(

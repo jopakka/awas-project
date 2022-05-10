@@ -5,6 +5,14 @@
     padding: 25px;
 }
 
+#createProductContainer {
+    display: block;
+}
+
+#createProductFormContainer {
+    display: table;
+}
+
 .productCard {
     max-width: 50vw;
 
