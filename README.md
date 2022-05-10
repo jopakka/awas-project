@@ -73,7 +73,7 @@ navigate to
 
 now go back to the register page, and open inspect element tool
 
-navigate to the HTML section above (you can use the page source code to navigate there easier)
+navigate to the HTML section above (you can use the page source code as a guide to navigate there easier)
 
 then simply replace "none" with "block" and remove "disabled"
 
