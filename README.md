@@ -82,7 +82,7 @@ Check the box and enter new user credentials. Click register. You have now creat
 ### Code injections
 First, log in as any user (register first if you have not created an account yet)
 
-Then, in the main main, click on the "create product" button
+Then, in the main page, click on the "create product" button
 
 Enter any value into the title
 
@@ -92,13 +92,15 @@ For the description, paste the following code:
 ", 1) UNION SELECT Username, IsAdmin, id FROM users#
 ```
 
-You should see some more product postings, but with titles have been replaced with usernames and description with IsAdmin
+You should see some more product postings, but the titles have been replaced with usernames and description with the IsAdmin value
 
 Now that you can see which users are admins, you can get their passwords with
 
 ```
 ", 1) UNION SELECT Username, Password, id FROM users#
 ```
+
+Next, logout from your current user and log in as either another regular user or as an admin with the stolen credentials.
 
 ### SQL dump file with dirbuster
 
