@@ -8,23 +8,9 @@ const pool = createPool({
   connectionLimit: 5,
 });
 
-const startDatabase = async () => {
-  let conn;
-  try {
-    conn = await pool.getConnection();
-  } catch (err) {
-    throw err;
-  } finally {
-    if (conn) return conn.end();
-  }
-};
-
 const testQuery = async () => {
-    let conn;
   try {
-    conn = await pool.getConnection();
-    await conn.query("USE awas_project");
-    const users = await conn.query("SELECT * FROM users");
+    const users = await pool.query("SELECT * FROM users");
     console.log('users: ', users);
     return "success";
   } catch (error) {
@@ -33,10 +19,8 @@ const testQuery = async () => {
 };
 
 const loginQuery = async (username) => {
-  let conn;
   try {
-    conn = await pool.getConnection();
-    const [user] = await conn.query(`SELECT * FROM users WHERE Username="${username}"`);
+    const [user] = await pool.query(`SELECT * FROM users WHERE Username="${username}"`);
     return user
   } catch (e) {
     return e;
@@ -44,13 +28,9 @@ const loginQuery = async (username) => {
 }
 
 const registerQuery = async (username, password) => {
-  let conn;
   try {
-    conn = await pool.getConnection();
-    const row = await conn.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", false)`);
-    console.log("row", row.insertId)
-    const [user] = await conn.query('SELECT * FROM users WHERE id=?', [row.insertId]);
-    console.log("user", user)
+    const row = await pool.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", false)`);
+    const [user] = await pool.query('SELECT * FROM users WHERE id=?', [row.insertId]);
     return user
   } catch (e) {
     return e;
@@ -58,10 +38,8 @@ const registerQuery = async (username, password) => {
 }
 
 const insertProduct = async (title, description, userId) => {
-  let conn;
   try {
-    conn = await pool.getConnection();
-    const row = await conn.query(`INSERT INTO products(ProductName, ProductDescription, UserId) VALUES ("${title}", "${description}", "${userId}")`);
+    const row = await pool.query(`INSERT INTO products(ProductName, ProductDescription, UserId) VALUES ("${title}", "${description}", "${userId}")`);
     console.log("row", row.insertId)
     return "success";
   } catch (e) {
@@ -70,11 +48,8 @@ const insertProduct = async (title, description, userId) => {
 }
 
 const getAllProducts = async () => {
-  let conn;
   try {
-    console.log('getAllproducts try');
-    conn = await pool.getConnection();
-    const row = await conn.query(`SELECT * FROM products`);
+    const row = await pool.query(`SELECT * FROM products`);
     console.log("getAllProducts row", row);
     return row;
   } catch (e) {
@@ -83,10 +58,8 @@ const getAllProducts = async () => {
 }
 
 const deleteProduct = async (productId) => {
-  let conn;
   try {
-    conn = await pool.getConnection();
-    const row = await conn.query(`DELETE FROM products WHERE id = "${productId}"`);
+    const row = await pool.query(`DELETE FROM products WHERE id = "${productId}"`);
     console.log("row", row.insertId)
     return "success";
   } catch (e) {
@@ -94,4 +67,4 @@ const deleteProduct = async (productId) => {
   }
 }
 
-export { startDatabase, testQuery, loginQuery, registerQuery, insertProduct, getAllProducts, deleteProduct };
+export { testQuery, loginQuery, registerQuery, insertProduct, getAllProducts, deleteProduct };
