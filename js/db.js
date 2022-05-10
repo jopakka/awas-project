@@ -57,4 +57,41 @@ const registerQuery = async (username, password) => {
   }
 }
 
-export { startDatabase, testQuery, loginQuery, registerQuery };
+const insertProduct = async (title, description, userId) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const row = await conn.query(`INSERT INTO products(ProductName, ProductDescription, UserId) VALUES ("${title}", "${description}", "${userId}")`);
+    console.log("row", row.insertId)
+    return "success";
+  } catch (e) {
+    return e;
+  }
+}
+
+const getAllProducts = async () => {
+  let conn;
+  try {
+    console.log('getAllproducts try');
+    conn = await pool.getConnection();
+    const row = await conn.query(`SELECT * FROM products`);
+    console.log("getAllProducts row", row);
+    return row;
+  } catch (e) {
+    return e;
+  }
+}
+
+const deleteProduct = async (productId) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const row = await conn.query(`DELETE FROM products WHERE id = "${productId}"`);
+    console.log("row", row.insertId)
+    return "success";
+  } catch (e) {
+    return e;
+  }
+}
+
+export { startDatabase, testQuery, loginQuery, registerQuery, insertProduct, getAllProducts, deleteProduct };

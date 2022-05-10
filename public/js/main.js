@@ -16,7 +16,7 @@
       console.log("createProductForm exists");
       // delete product form
       document.querySelector("#createProductForm").remove();
-    } 
+    }
 
     // if the form doesn't exist, then ...
     else {
@@ -76,22 +76,68 @@
       createProductFormList.appendChild(createProductContainer);
 
       // click listener for submitting form
-      createProductFormInputSubmit.addEventListener("click", (event) => {
+      createProductFormInputSubmit.addEventListener("click", async (event) => {
         event.preventDefault();
-        console.log("submitted product");
+
         const title = createProductFormInputTitle.value;
         const description = createProductFormInputDescription.value;
+
+        const body = {
+          title,
+          description,
+        };
+        try {
+          const response = await fetch("http://localhost:3000/product", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+          });
+
+          if (response.status !== 200) {
+            console.log("create product error: ", response.statusText);
+          } else {
+            console.log("success: ", response.statusText);
+          }
+        } catch (e) {
+          console.error("create product error", e.message);
+        }
+
+        console.log("submitted product");
         document.querySelector("#createProductForm").remove();
-        loadContent(title, description);
+        loadContent();
       });
     }
   };
 
   // Clears product listing and calls createProductContent();
-  const loadContent = (title, description) => {
-    console.log("loadcontent", title, description);
-    // productList.innerHTML = "";
-    createProductContent(title, description);
+  const loadContent = async () => {
+    console.log("loadcontent");
+    productList.innerHTML = "";
+    try {
+      console.log("try get1");
+      const response = await fetch("http://localhost:3000/getAllProducts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("try get2");
+      if (response.status !== 200) {
+        console.log("get all products error: ", response.statusText);
+      } else {
+        const json = await response.json();
+        console.log("try get3");
+        console.log("success: ", json);
+        json.forEach((e) => {
+          createProductContent(e.ProductName, e.ProductDescription);
+        });
+      }
+    } catch (error) {
+      console.error("loadcontent error: ", error.message);
+    }
   };
 
   // Creates Product content via DOM
@@ -104,7 +150,7 @@
     const productTitle = document.createElement("h3");
     productTitle.classList.add("productTitle");
     const productDescription = document.createElement("article");
-    productDescription.classList.add("productDescription")
+    productDescription.classList.add("productDescription");
 
     productTitle.innerHTML = title;
     productDescription.innerHTML = description;
@@ -118,13 +164,14 @@
     productCard.appendChild(productContainer);
 
     productList.appendChild(productCard);
+
+    // insert into database
   };
 
   loadContent();
 
-  buttonCreateProduct.addEventListener("click", (event) => {
+  buttonCreateProduct.addEventListener("click", async (event) => {
     event.preventDefault();
     createProductForm();
-    //createProductContent();
   });
 })();
