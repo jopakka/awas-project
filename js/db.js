@@ -31,4 +31,26 @@ const testQuery = async () => {
   }
 };
 
-export { startDatabase, testQuery };
+const loginQuery = async (username) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const [user] = await conn.query(`SELECT * FROM users WHERE Username="${username}"`);
+    return user
+  } catch (e) {
+    return e;
+  }
+}
+
+const registerQuery = async (username, password) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const [user] = await conn.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", false)`)
+    return user
+  } catch (e) {
+    return e;
+  }
+}
+
+export { startDatabase, testQuery, loginQuery, registerQuery };

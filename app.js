@@ -1,6 +1,7 @@
 import express from 'express';
 import { testQuery } from './js/db';
 import passport from './utils/pass';
+import authRoute from './routes/authRoute';
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,7 @@ app.get('/secret*',
       res.render('secret');
     });
 
-app.post('/login', );
+    app.use('/auth', authRoute);
 
 app.use(express.static('./public'));
 

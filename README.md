@@ -47,3 +47,4 @@ Next, create table "products"
 ```
 
 Congratulations, you have now created the database and necessary tables! Now you just need to use the website.
+
