@@ -2,6 +2,11 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import {loginQuery} from '../js/db';
+import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt'
+
+const cookieExtractor = (req) => {
+  return (req && req.cookies) ? req.cookies['token'] : null;
+}
 
 passport.use(new LocalStrategy({session: false},async (username, password, done) => {
   const user = await loginQuery(username);
@@ -11,5 +16,13 @@ passport.use(new LocalStrategy({session: false},async (username, password, done)
   delete loggedUser.password;
   return done(null, loggedUser);
 }));
+
+passport.use(new JwtStrategy({
+  jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
+  secretOrKey: 'secret',
+}, (payload, done) => {
+  console.log("payload", payload)
+  done(null, payload)
+}))
 
 export default passport;

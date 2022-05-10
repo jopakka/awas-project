@@ -2,14 +2,17 @@ import express from 'express';
 import { testQuery } from './js/db';
 import passport from './utils/pass';
 import authRoute from './routes/authRoute';
+import cookieParser from 'cookie-parser'
+import path from 'path';
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser())
 
 app.get('/secret*',
-    passport.authenticate('local', {failureRedirect: '/login.html'}),
+    passport.authenticate('jwt', {session: false, failureRedirect: '/login.html'}),
     (req, res) => {
-      res.render('secret');
+      res.sendFile(path.join(__dirname, 'public/secret.html'));
     });
 
     app.use('/auth', authRoute);
