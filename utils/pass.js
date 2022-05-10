@@ -20,8 +20,10 @@ passport.use(new LocalStrategy({session: false},async (username, password, done)
 passport.use(new JwtStrategy({
   jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
   secretOrKey: 'secret',
-}, (payload, done) => {
+  passReqToCallback: true,
+}, (req, payload, done) => {
   console.log("payload", payload)
+  req.user = payload;
   done(null, payload)
 }))
 
