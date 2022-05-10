@@ -132,7 +132,13 @@
         console.log("try get3");
         console.log("success: ", json);
         json.forEach((e) => {
-          createProductContent(e.ProductName, e.ProductDescription);
+          console.log("loadcontent e:", e);
+          createProductContent(
+            e.ProductName,
+            e.ProductDescription,
+            e.UserId,
+            e.id
+          );
         });
       }
     } catch (error) {
@@ -141,7 +147,7 @@
   };
 
   // Creates Product content via DOM
-  const createProductContent = (title, description) => {
+  const createProductContent = (title, description, userId, productId) => {
     console.log("createproductcontent");
 
     const productContainer = document.createElement("div");
@@ -158,14 +164,24 @@
     productContainer.appendChild(productTitle);
     productContainer.appendChild(productDescription);
 
+    if (userId === 2 || "IsAdmin") {
+      const buttonDeleteProduct = document.createElement("button");
+      buttonDeleteProduct.setAttribute("id", "buttonDeleteProduct");
+      buttonDeleteProduct.innerHTML = "delete";
+      productContainer.appendChild(buttonDeleteProduct);
+
+      buttonDeleteProduct.addEventListener("click", async (event) => {
+        event.preventDefault();
+        console.log('clicked delete product, productId: ', productId);
+      });
+    }
+
     const productCard = document.createElement("div");
     productCard.classList.add("productCard");
 
     productCard.appendChild(productContainer);
 
     productList.appendChild(productCard);
-
-    // insert into database
   };
 
   loadContent();
