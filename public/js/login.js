@@ -23,6 +23,7 @@ form.addEventListener('submit', async evt => {
       errorField.className = '';
       errorField.innerHTML = `Error: ${json.message}`;
     } else {
+      // TODO: save userinfo to somewhere and redirect somewhere
       errorField.className = 'hidden';
     }
   } catch (e) {

@@ -5,7 +5,7 @@ const errorField = document.querySelector('#registerError');
 // Registering action
 form.addEventListener('submit', async evt => {
   evt.preventDefault();
-  console.log('Register', elements);
+  errorField.className = 'hidden';
   try {
     const body = {
       username: elements.username.value,
@@ -25,7 +25,8 @@ form.addEventListener('submit', async evt => {
       errorField.className = '';
       errorField.innerHTML = `Error: ${json.message}`;
     } else {
-      errorField.className = 'hidden';
+      errorField.className = '';
+      errorField.innerHTML = 'User created successfully';
     }
   } catch (e) {
     console.error('login error', e.message);
