@@ -61,7 +61,23 @@ Congratulations, you have now created the database and necessary tables! Now you
 ## Vulnerabilities
 
 ### Bypassing access controls
+Go to register page, and open page source code
 
+navigate to
+
+```
+<label style="display: none">Admin
+  <input type="checkbox" name="admin" disabled>
+</label><br>
+```
+
+now go back to the register page, and open inspect element tool
+
+navigate to the HTML section above (you can use the page source code to navigate there easier)
+
+then simply replace "none" with "block" and remove "disabled"
+
+Check the box and enter new user credentials. Click register. You have now created an admin account.
 
 ### Code injections
 First, log in as any user (register first if you have not created an account yet)
