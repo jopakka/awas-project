@@ -27,9 +27,9 @@ const loginQuery = async (username) => {
   }
 }
 
-const registerQuery = async (username, password) => {
+const registerQuery = async (username, password, admin) => {
   try {
-    const row = await pool.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", false)`);
+    const row = await pool.query(`INSERT INTO users(Username, Password, IsAdmin) VALUES ("${username}", "${password}", ${admin})`);
     const [user] = await pool.query('SELECT * FROM users WHERE id=?', [row.insertId]);
     return user
   } catch (e) {

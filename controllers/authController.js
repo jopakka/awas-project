@@ -21,6 +21,7 @@ const register = async (req, res) => {
   const username = req.body.username;
   const pw = req.body.password;
   const cpw = req.body.confirmPassword;
+  const admin = req.body.admin;
   if (!username || username.trim() === '') {
     return res.status(400).json({message: 'username needed'});
   }
@@ -35,7 +36,7 @@ const register = async (req, res) => {
     if (user) {
       return res.status(400).json({message: 'username already exists'});
     }
-    const newUser = await registerQuery(username, pw);
+    const newUser = await registerQuery(username, pw, admin);
     delete newUser.Password;
     return res.json(newUser);
   } catch (e) {
