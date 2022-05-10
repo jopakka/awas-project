@@ -23,9 +23,8 @@ form.addEventListener('submit', async evt => {
       errorField.className = '';
       errorField.innerHTML = `Error: ${json.message}`;
     } else {
-      // TODO: save userinfo to somewhere and redirect somewhere
       errorField.className = 'hidden';
-      document.cookie = `token=${json.token}`;
+      document.cookie = `token=${json.token}; SameSite=lax;`;
       window.open('http://localhost:3000/secret', '_self');
     }
   } catch (e) {
