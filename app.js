@@ -1,4 +1,5 @@
 import express from 'express';
+import { testQuery } from './js/db';
 import passport from './utils/pass';
 
 const app = express();
@@ -16,4 +17,5 @@ app.use(express.static('./public'));
 
 app.listen(3000, () => {
   console.log('App running on http://localhost:3000/');
+  testQuery();
 });

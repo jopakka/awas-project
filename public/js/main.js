@@ -1,9 +1,8 @@
 "use strict";
-() => {
+(async () => {
   const productList = document.querySelector("#productList");
-  console.log('do i exist?');
-
-  loadContent();
+  const buttonCreateProduct = document.querySelector("#createProduct");
+  console.log("do i exist?");
 
   const loadContent = () => {
     // clear ul
@@ -14,12 +13,31 @@
 
   const createProductContent = () => {
     console.log("createproductcontent");
-    const prdouctCard = document.createElement("card");
+
+    const productDiv = document.createElement("div");
+    productDiv.classList.add("productContent");
+
     const productTitle = document.createElement("h3");
+    const productDescription = document.createElement("p");
+
     productTitle.innerHTML = "new product title";
+    productDescription.innerHTML = "new product description";
 
-    prdouctCard.appendChild(productTitle);
+    productDiv.appendChild(productTitle);
+    productDiv.appendChild(productDescription);
 
-    productList.appendChild(prdouctCard);
+    const productCard = document.createElement("div");
+    productCard.classList.add("productCard");
+
+    productCard.appendChild(productDiv);
+
+    productList.appendChild(productCard);
   };
-};
+
+  loadContent();
+
+  buttonCreateProduct.addEventListener("click", (event) => {
+    event.preventDefault();
+    createProductContent();
+  });
+})();

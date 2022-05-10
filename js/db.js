@@ -2,8 +2,8 @@
 import { createPool } from "mariadb";
 const pool = createPool({
   host: "localhost",
-  user: "root",
-  password: "password123",
+  user: "awasUser",
+  password: "password1",
   connectionLimit: 5,
 });
 
