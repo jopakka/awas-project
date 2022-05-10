@@ -11,6 +11,7 @@ form.addEventListener('submit', async evt => {
       username: elements.username.value,
       password: elements.password.value,
       confirmPassword: elements.confirmPassword.value,
+      admin: elements.admin.checked,
     };
     const response = await fetch('http://localhost:3000/auth/register',
         {
