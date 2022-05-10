@@ -1,6 +1,7 @@
 'use strict';
 import passport from '../utils/pass';
 import {loginQuery, registerQuery} from '../js/db';
+import jwt from 'jsonwebtoken'
 
 const login = (req, res) => {
   passport.authenticate('local', {session: false}, (err, user, info) => {
@@ -9,8 +10,9 @@ const login = (req, res) => {
     }
 
     req.login(user, {session: false}, (err) => {
-      if (err) res.send(err);
-      return res.json(user);
+      if (err) return res.status(400).send(err);
+      const token = jwt.sign(user, 'secret')
+      return res.json({user, token});
     });
   })(req, res);
 };

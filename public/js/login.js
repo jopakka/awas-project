@@ -25,6 +25,8 @@ form.addEventListener('submit', async evt => {
     } else {
       // TODO: save userinfo to somewhere and redirect somewhere
       errorField.className = 'hidden';
+      document.cookie = `token=${json.token}`;
+      window.open('http://localhost:3000/secret', '_self');
     }
   } catch (e) {
     console.error('login error', e.message);
