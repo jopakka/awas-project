@@ -7,6 +7,17 @@
   );
   const buttonCreateProduct = document.querySelector("#createProduct");
 
+  const getCookie = (name) => {
+    try {
+      return document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${name}=`))
+        .split("=")[1];
+    } catch (e) {
+      return null;
+    }
+  };
+
   // Creates form for user input to create product
   const createProductForm = () => {
     console.log("createProductForm");
@@ -164,7 +175,13 @@
     productContainer.appendChild(productTitle);
     productContainer.appendChild(productDescription);
 
-    if (userId === 2 || "IsAdmin") {
+    const isAdmin = getCookie("admin");
+    const currentUserId = getCookie("userId");
+
+    console.log('product user id: ', userId, "current user id: ", currentUserId, "is admin?: ", isAdmin);
+
+    if (Number(userId) === Number(currentUserId) || isAdmin === "true") {
+      console.log('here');
       const buttonDeleteProduct = document.createElement("button");
       buttonDeleteProduct.setAttribute("id", "buttonDeleteProduct");
       buttonDeleteProduct.innerHTML = "delete";
@@ -172,7 +189,7 @@
 
       buttonDeleteProduct.addEventListener("click", async (event) => {
         event.preventDefault();
-        console.log('clicked delete product, productId: ', productId);
+        console.log("clicked delete product, productId: ", productId);
       });
     }
 
