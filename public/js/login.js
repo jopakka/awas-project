@@ -27,7 +27,7 @@ form.addEventListener('submit', async evt => {
       document.cookie = `token=${json.token}; SameSite=lax;`;
       document.cookie = `userId=${json.user.id}; SameSite=lax;`;
       document.cookie = `admin=${(json.user.IsAdmin === 1)}; SameSite=lax;`;
-      window.open('http://localhost:3000/secret', '_self');
+      window.open('http://localhost:3000/', '_self');
     }
   } catch (e) {
     console.error('login error', e.message);
