@@ -38,7 +38,7 @@ Next, create table "products"
 ```
 CREATE TABLE IF NOT EXISTS Products(
   id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  ProductName VARCHAR(30) NOT NULL
+  ProductName VARCHAR(30) NOT NULL,
   ProductDescription VARCHAR(500) NOT NULL,
   UserId MEDIUMINT NOT NULL,
   PRIMARY KEY (id),
