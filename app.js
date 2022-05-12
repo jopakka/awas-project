@@ -1,5 +1,5 @@
 import express from "express";
-import { testQuery, insertProduct, getAllProducts } from "./js/db";
+import { testQuery, insertProduct, getAllProducts, deleteProductById } from "./js/db";
 import passport from "./utils/pass";
 import authRoute from "./routes/authRoute";
 import cookieParser from "cookie-parser";
@@ -46,7 +46,23 @@ app.post("/getAllProducts", async (req, res) => {
     const allProducts = await getAllProducts();
     console.log('allproducts: ', allProducts);
     res.json(allProducts);
-  } catch (error) {}
+  } catch (error) {
+    console.error("get all products error: ", error.message);
+  }
+});
+
+app.post("/deleteProductById", async (req, res) => {
+  try {
+    const product = await deleteProductById(req.body.id);
+    console.log('deleted product ', product);
+
+    const newDeletedProduct = JSON.stringify(product, (_, v) => typeof v === 'bigint' ? v.toString() : v)
+    const obj = JSON.parse(newDeletedProduct)
+
+    res.json(obj);
+  } catch (error) {
+    console.error("delete product error: ", error.message);
+  }
 });
 
 app.use(express.static("./public"));
