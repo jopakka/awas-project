@@ -190,6 +190,34 @@
       buttonDeleteProduct.addEventListener("click", async (event) => {
         event.preventDefault();
         console.log("clicked delete product, productId: ", productId);
+
+        const body = {
+          id: productId,
+        };
+
+        try {
+          console.log("delete1");
+          const response = await fetch("http://localhost:3000/deleteProductById", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+          });
+    
+          console.log("delete2");
+          if (response.status !== 200) {
+            console.log("delete product error: ", response.statusText);
+          } else {
+            const json = await response.json();
+            console.log("delete3");
+            console.log("delete success: ", json);
+
+            loadContent();
+          }
+        } catch (error) {
+          console.error("delete product error: ", error.message);
+        }
       });
     }
 

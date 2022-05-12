@@ -57,14 +57,15 @@ const getAllProducts = async () => {
   }
 }
 
-const deleteProduct = async (productId) => {
+const deleteProductById = async (productId) => {
   try {
+    console.log('deleteProductById productId: ', productId);
     const row = await pool.query(`DELETE FROM products WHERE id = "${productId}"`);
     console.log("row", row.insertId)
-    return "success";
+    return row;
   } catch (e) {
     return e;
   }
 }
 
-export { testQuery, loginQuery, registerQuery, insertProduct, getAllProducts, deleteProduct };
+export { testQuery, loginQuery, registerQuery, insertProduct, getAllProducts, deleteProductById };
