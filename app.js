@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get(
-  "/secret*",
+  /(secret\.html|secret)/gi,
   passport.authenticate("jwt", {
     session: false,
     failureRedirect: "/login.html",
