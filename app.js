@@ -13,7 +13,6 @@ app.get(
   /(secret\.html|secret)\b/gi,
   passport.authenticate("jwt", {
     session: false,
-    failureRedirect: "/login.html",
   }),
   (req, res) => {
     res.sendFile(path.join(__dirname, "public/secret.html"));
