@@ -88,6 +88,8 @@ then simply replace "none" with "block" and remove "disabled"
 
 Check the box and enter new user credentials. Click register. You have now created an admin account.
 
+Another way to bypass client side controls is to edit your cookies. In the cookies, there is a "admin" cookie with a default value of "false". By editing the value as "true", you now have admin privileges (which is just to delete product postings). You can also change your userId to someone else, and create and delete product postings of that user. You just need to refresh the page once the cookies are edited.
+
 ### Code injections
 First, log in as any user (register first if you have not created an account yet)
 
