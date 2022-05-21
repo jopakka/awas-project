@@ -6,7 +6,7 @@ If you do not already have MariaDB installed on your computer, you can download 
 
 ### Navigate to database client and login as root
 
-Go to your database/bin file (for example C:\Program Files\MariaDB 10.6\bin)
+Open a terminal (you may need to run as admin) and navigate to your MariaDB database/bin file (for example C:\Program Files\MariaDB 10.6\bin)
 
 Log in as the root user with:
 ```
