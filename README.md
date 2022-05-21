@@ -104,5 +104,5 @@ Next, logout from your current user and log in as either another regular user or
 
 ### SQL dump file with dirbuster
 
-Use dirbuster with target URL http://localhost:3000, test.txt list, sql as file extension. The program should find awasDump.sql file.
+Use dirbuster with target URL http://localhost:3000, list.txt list, sql as file extension. The program should find awasDump.sql file.
 
