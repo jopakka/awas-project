@@ -57,6 +57,15 @@ FLUSH PRIVILEGES;
 
 Congratulations, you have now created the database and necessary tables! Now you just need to use the website.
 
+### Start the application
+It is recommended you use Visual Studio Code to start the web app. You can start the app via the command terminal (terminal-> new terminal). Make sure you are in the correct folder (the folder is awas-project). Then, run the following command:
+```
+node start.js
+```
+If the applcation started properly, you should see a message in the terminal saying: App running on http://localhost:3000/
+
+To stop the application, just press ctrl+c in the terminal.
+
 
 ## Vulnerabilities
 
